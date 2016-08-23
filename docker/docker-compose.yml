@@ -1,0 +1,6 @@
+stuff:
+  build: .
+  volumes:
+    - ~:/home/rich
+  #command: su - rich
+  working_dir: /home/rich
