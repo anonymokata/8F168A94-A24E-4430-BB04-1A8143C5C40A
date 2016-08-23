@@ -1,0 +1,9 @@
+#include <check.h>
+#include "calculator.h"
+
+char result[100];
+
+#test one_plus_one_is_two
+	add(result, "I", "I");
+	ck_assert_str_eq(result, "II");
+	
