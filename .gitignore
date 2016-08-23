@@ -1,0 +1,3 @@
+all_tests
+*_tests.c
+*.g???
