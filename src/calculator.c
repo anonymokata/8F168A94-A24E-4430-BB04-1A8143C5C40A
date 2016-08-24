@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#define BUFFER_SIZE 100
+
 void replace(char *result, const char *pattern, const char *replacement)
 {
         char *sub_string_pointer;
@@ -20,10 +22,22 @@ void contract(char *result)
 	replace(result, "IIII", "IV");
 }
 
+void expand(char *operand, const char *oper)
+{
+	strcpy(operand, oper);
+	replace(operand, "IV", "IIII");
+}
+
 void add(char *result, const char *left_oper, const char *right_oper)
 {
-	strcpy(result, left_oper);
-	strcpy(result+strlen(left_oper), right_oper);
+	char left_operand[BUFFER_SIZE]; 
+	char right_operand[BUFFER_SIZE];
+
+	expand(left_operand, left_oper);
+	expand(right_operand, right_oper);
+
+	strcpy(result, left_operand);
+	strcpy(result+strlen(left_operand), right_operand);
 	contract(result);
 }
 

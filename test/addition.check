@@ -18,4 +18,6 @@ char result[100];
 #test three_plus_three_is_six
 	add(result, "III", "III");
 	ck_assert_str_eq(result, "VI");
-
+#test four_plus_one_is_five
+	add(result, "IV", "I");
+	ck_assert_str_eq(result, "V");
