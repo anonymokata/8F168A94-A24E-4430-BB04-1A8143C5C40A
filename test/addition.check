@@ -75,3 +75,10 @@ char result[100];
 #test forty_plus_ten_is_fifty
 	add(result, "XL", "X");
 	ck_assert_str_eq(result, "L");
+#test ten_plus_forty_is_fifty
+	add(result, "X", "XL");
+	ck_assert_str_eq(result, "L");
+#test forty_plus_forty_is_eighty
+	add(result, "XL", "XL");
+	ck_assert_str_eq(result, "LXXX");
+	
