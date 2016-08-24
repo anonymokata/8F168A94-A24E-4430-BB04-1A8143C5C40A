@@ -12,3 +12,6 @@ char result[100];
 #test two_plus_two
 	add(result, "II", "II");
 	ck_assert_str_eq(result, "IV");
+#test two_plus_three
+	add(result, "II", "III");
+	ck_assert_str_eq(result, "V");

@@ -16,6 +16,7 @@ void replace(char *result, const char *pattern, const char *replacement)
 
 void contract(char *result)
 {
+	replace(result, "IIIII", "V");
 	replace(result, "IIII", "IV");
 }
 
