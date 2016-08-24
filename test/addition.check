@@ -108,3 +108,6 @@ char result[100];
 #test ninehundred_plus_twohundred_is_onethousandonehundred
 	add(result, "CM", "CC");
 	ck_assert_str_eq(result, "MC");
+#test fifty_plus_fifty_is_onehundred
+	add(result, "L", "L");
+	ck_assert_str_eq(result, "C");

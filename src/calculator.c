@@ -32,6 +32,7 @@ void contract(char *result)
 	replace(result, "XXXXX", "L");
 	replace(result, "IIIII", "V");
 	replace(result, "DD", "M");
+	replace(result, "LL", "C");
 	replace(result, "VV", "X");
 	replace(result, "DCCCC", "CM");
 	replace(result, "CCCC", "CD");
