@@ -13,10 +13,10 @@ void replace(char *result, const char *pattern, const char *replacement)
         char *sub_string_pointer;
         if (NULL != (sub_string_pointer = strstr(result, pattern)))
         {
-        	int pattern_length = strlen(pattern);
-                int replacement_length = strlen(replacement);
-                strcpy(sub_string_pointer + replacement_length, sub_string_pointer + pattern_length);
-                memcpy(sub_string_pointer, replacement, replacement_length);
+		size_t pattern_length = strlen(pattern);
+		size_t replacement_length = strlen(replacement);
+		strcpy(&sub_string_pointer[replacement_length], &sub_string_pointer[pattern_length]);
+		memcpy(sub_string_pointer, replacement, replacement_length);
         }
 }
 
