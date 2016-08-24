@@ -84,3 +84,6 @@ char result[100];
 #test fifty_plus_forty_is_ninty
 	add(result, "L", "XL");
 	ck_assert_str_eq(result, "XC");
+#test ninty_plus_one_is_ninty_one
+	add(result, "XC", "I");
+	ck_assert_str_eq(result, "XCI");
