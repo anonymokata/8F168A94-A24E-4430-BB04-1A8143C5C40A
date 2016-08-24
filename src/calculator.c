@@ -85,10 +85,10 @@ void add(char *result, const char *left_oper, const char *right_oper)
 	char left_operand[BUFFER_SIZE]; 
 	char right_operand[BUFFER_SIZE];
 
-	expand(left_operand, left_oper);
-	expand(right_operand, right_oper);
-	if (validate_inputs(left_operand, right_operand))
+	if (validate_inputs(left_oper, right_oper))
 	{
+		expand(left_operand, left_oper);
+		expand(right_operand, right_oper);
 
 		strcpy(result, left_operand);
 		strcpy(result + strlen(left_operand), right_operand);
