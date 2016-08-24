@@ -6,4 +6,7 @@ char result[100];
 #test one_plus_one_is_two
 	add(result, "I", "I");
 	ck_assert_str_eq(result, "II");
-	
+#test one_plus_two_is_three
+	add(result, "II", "I");
+	ck_assert_str_eq(result, "III");
+
