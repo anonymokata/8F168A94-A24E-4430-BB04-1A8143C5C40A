@@ -4,31 +4,19 @@
 #include <stdbool.h>
 
 #define MAX_ROMAN 3999
-
-bool within_range(char *result)
-{
-	int sum = 0;
-	for(int idx = 0; idx < strlen(result); idx++)
-	{
-		sum += convert_roman_char_to_dec(result + idx);
-	}
-	return sum < MAX_ROMAN;
-}
-
-bool is_roman_number(const char * result)
-{
-	const char VALID_CHARS[] = "IVXLCDM";
-	bool rval = true;
-	for(int idx = 0; idx < strlen(result); idx++)
-	{
-		rval &= (NULL == strchr(VALID_CHARS, result[idx]));
-	}
-	return rval;
-}
+#define ROMAN_CHARS "IVXLCDM"
 
 void validate(char *result)
 {
-	if (!within_range(result) || is_roman_number(result))
+	const char VALID_CHARS[] = ROMAN_CHARS;
+	bool all_roman_chars = true;
+	int sum_of_digits = 0;
+	for(int idx = 0; idx < strlen(result); idx++)
+	{
+		sum_of_digits += convert_roman_char_to_dec(result + idx);
+		all_roman_chars &= (NULL != strchr(VALID_CHARS, result[idx]));
+	}
+	if (MAX_ROMAN < sum_of_digits || !all_roman_chars)
 	{
 		strcpy(result, "ERROR");
 	}
