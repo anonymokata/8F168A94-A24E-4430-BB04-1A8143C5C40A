@@ -60,3 +60,12 @@ char result[100];
 #test eight_plus_two_is_ten
 	add(result, "VIII", "II");
 	ck_assert_str_eq(result, "X");
+#test ten_plus_nine_is_nineteen
+	add(result, "X", "IX");
+	ck_assert_str_eq(result, "XIX");
+#test ten_plus_ten_is_twenty
+	add(result, "X", "X");
+	ck_assert_str_eq(result, "XX");
+#test twenty_plus_twenty_is_forty
+	add(result, "XX", "XX");
+	ck_assert_str_eq(result, "XL");

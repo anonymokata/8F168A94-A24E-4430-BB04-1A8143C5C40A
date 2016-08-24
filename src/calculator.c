@@ -32,6 +32,7 @@ void contract(char *result)
 	replace(result, "VIIII", "IX");
 	replace(result, "IIII", "IV");
 	replace(result, "VV", "X");
+	replace(result, "XXXX", "XL");
 }
 
 void expand(char *operand, const char *oper)
