@@ -48,3 +48,6 @@ char result[100];
 #test nine_plus_one_is_ten
 	add(result, "IX", "I");
 	ck_assert_str_eq(result, "X");
+#test one_plus_nine_is_ten
+	add(result, "I", "IX");
+	ck_assert_str_eq(result, "X");
