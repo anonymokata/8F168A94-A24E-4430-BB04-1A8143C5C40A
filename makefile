@@ -1,6 +1,6 @@
 LD_LIBRARY_PATH=/usr/local/lib
 CC=gcc
-CFLAGS=-Wall -std=c99
+CFLAGS=-Wall
 LDFLAGS=
 LIBS=-lcheck -lm -pthread -lrt
 CHECKMK=checkmk

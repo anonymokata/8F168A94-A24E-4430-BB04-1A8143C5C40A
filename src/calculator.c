@@ -22,7 +22,8 @@ void replace(char *result, const char *pattern, const char *replacement)
 
 void replace_all(char *patterns[][2], int patternsc, char *result)
 {
-	for(int pidx = 0; pidx < patternsc; pidx++)
+	int pidx;
+	for(pidx = 0; pidx < patternsc; pidx++)
 	{
 		replace(result, patterns[pidx][0], patterns[pidx][1]);
 	}
