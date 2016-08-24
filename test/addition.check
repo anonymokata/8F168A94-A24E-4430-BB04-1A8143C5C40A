@@ -27,21 +27,24 @@ char result[100];
 #test four_plus_five_is_nine
 	add(result, "IV", "V");
 	ck_assert_str_eq(result, "IX");
-#test six_and_three_is_nine
+#test six_plus_three_is_nine
 	add(result, "VI", "III");
 	ck_assert_str_eq(result, "IX");
-#test three_and_six_is_nine
+#test three_plus_six_is_nine
 	add(result, "III", "VI");
 	ck_assert_str_eq(result, "IX");
-#test seven_and_two_is_nine
+#test seven_plus_two_is_nine
 	add(result, "VII", "II");
 	ck_assert_str_eq(result, "IX");
-#test two_and_seven_is_nine
+#test two_plus_seven_is_nine
 	add(result, "II", "VII");
 	ck_assert_str_eq(result, "IX");
-#test eight_and_one_is_nine
+#test eight_plus_one_is_nine
 	add(result, "VIII", "I");
 	ck_assert_str_eq(result, "IX");
-#test one_and_eight_is_nine
+#test one_plus_eight_is_nine
 	add(result, "I", "VIII");
 	ck_assert_str_eq(result, "IX");
+#test nine_plus_one_is_ten
+	add(result, "IX", "I");
+	ck_assert_str_eq(result, "X");

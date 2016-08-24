@@ -1,7 +1,6 @@
 #include "convert_roman.h"
 #include "calculator.h"
 #include <string.h>
-#include <stdbool.h>
 #include <stdlib.h>
 
 #define BUFFER_SIZE 100
@@ -29,8 +28,8 @@ int compare_roman_chars(const void *a, const void *b)
 void contract(char *result)
 {
 	qsort(result, strlen(result), sizeof(char), compare_roman_chars);
-	replace(result, "VIIII", "IX");
 	replace(result, "IIIII", "V");
+	replace(result, "VIIII", "IX");
 	replace(result, "IIII", "IV");
 	replace(result, "VV", "X");
 }
@@ -38,6 +37,7 @@ void contract(char *result)
 void expand(char *operand, const char *oper)
 {
 	strcpy(operand, oper);
+	replace(operand, "IX", "VIIII");
 	replace(operand, "IV", "IIII");
 }
 
