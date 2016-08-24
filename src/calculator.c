@@ -20,6 +20,14 @@ void replace(char *result, const char *pattern, const char *replacement)
         }
 }
 
+void replace_all(char *patterns[][2], int patternsc, char *result)
+{
+	for(int pidx = 0; pidx < patternsc; pidx++)
+	{
+		replace(result, patterns[pidx][0], patterns[pidx][1]);
+	}
+}
+
 int compare_roman_chars(const void *a, const void *b)
 {
 	int ia = convert_roman_char_to_dec((char *)a);
@@ -45,10 +53,7 @@ void contract(char *result)
 				{"IIII", "IV"}
 			       };
 	qsort(result, strlen(result), sizeof(char), compare_roman_chars);
-	for(int pidx = 0; pidx < 12; pidx++)
-	{
-		replace(result, patterns[pidx][0], patterns[pidx][1]);
-	}
+	replace_all(patterns, 12, result);
 }
 
 void expand(char *operand, const char *oper)
@@ -62,10 +67,7 @@ void expand(char *operand, const char *oper)
 				{"IV", "IIII"}
 			       };
 	strcpy(operand, oper);
-	for(int pidx = 0; pidx < 6; pidx++)
-	{
-		replace(operand, patterns[pidx][0], patterns[pidx][1]);
-	}
+	replace_all(patterns, 6, operand);
 }
 
 bool validate_inputs(const char *left_oper, const char *right_oper)
