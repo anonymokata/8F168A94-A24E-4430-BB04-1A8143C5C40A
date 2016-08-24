@@ -99,6 +99,9 @@ char result[100];
 #test fourhundred_plus_one_hundred_is_fivehundred
 	add(result, "CD", "C");
 	ck_assert_str_eq(result, "D");
-#test fourhundred_plus_fivehundred_is_nine_hundred
+#test fourhundred_plus_fivehundred_is_ninehundred
 	add(result, "CD", "D");
 	ck_assert_str_eq(result, "CM");
+#test ninehundred_plus_tenty_is_ninehundredtwenty
+	add(result, "CM", "XX");
+	ck_assert_str_eq(result, "CMXX");

@@ -43,6 +43,7 @@ void contract(char *result)
 void expand(char *operand, const char *oper)
 {
 	strcpy(operand, oper);
+	replace(operand, "CM", "DCCCC");
 	replace(operand, "CD", "CCCC");
 	replace(operand, "XC", "LXXXX");
 	replace(operand, "XL", "XXXX");
