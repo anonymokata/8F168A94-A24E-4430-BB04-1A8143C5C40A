@@ -53,13 +53,19 @@ void contract(char *result)
 
 void expand(char *operand, const char *oper)
 {
+	char *patterns[6][2] = {
+				{"CM", "DCCCC"},
+				{"CD", "CCCC"},
+				{"XC", "LXXXX"},
+				{"XL", "XXXX"},
+				{"IX", "VIIII"},
+				{"IV", "IIII"}
+			       };
 	strcpy(operand, oper);
-	replace(operand, "CM", "DCCCC");
-	replace(operand, "CD", "CCCC");
-	replace(operand, "XC", "LXXXX");
-	replace(operand, "XL", "XXXX");
-	replace(operand, "IX", "VIIII");
-	replace(operand, "IV", "IIII");
+	for(int pidx = 0; pidx < 6; pidx++)
+	{
+		replace(operand, patterns[pidx][0], patterns[pidx][1]);
+	}
 }
 
 bool validate_inputs(const char *left_oper, const char *right_oper)
