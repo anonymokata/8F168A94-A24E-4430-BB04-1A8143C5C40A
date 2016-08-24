@@ -1,8 +1,10 @@
+#include <stdio.h>
 #include "validate.h"
 #include "convert_roman.h"
 #include "calculator.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define BUFFER_SIZE 100
 
@@ -54,19 +56,34 @@ void expand(char *operand, const char *oper)
 	replace(operand, "IV", "IIII");
 }
 
+bool validate_inputs(const char *left_oper, const char *right_oper)
+{
+	bool valid = true;
+	if (0u == strlen(left_oper) || 0u == strlen(right_oper)) 
+	{
+		valid = false;
+	}
+	return valid;
+}
+
 void add(char *result, const char *left_oper, const char *right_oper)
 {
 	char left_operand[BUFFER_SIZE]; 
 	char right_operand[BUFFER_SIZE];
 
-	expand(left_operand, left_oper);
-	expand(right_operand, right_oper);
+	if (validate_inputs(left_oper, right_oper))
+	{
+		expand(left_operand, left_oper);
+		expand(right_operand, right_oper);
 
-	strcpy(result, left_operand);
-	strcpy(result + strlen(left_operand), right_operand);
+		strcpy(result, left_operand);
+		strcpy(result + strlen(left_operand), right_operand);
 
-	contract(result);
+		contract(result);
 
-	validate(result);
+		validate(result);
+	} else {
+		strcpy(result, "ERROR");
+	}
 }
 

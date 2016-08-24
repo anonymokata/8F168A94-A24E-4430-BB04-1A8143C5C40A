@@ -123,3 +123,21 @@ char result[100];
 #test cannot_exceed_3999_in_result
 	add(result, "MMMCMXCIX", "I");
 	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_left_oper_to_big
+	add(result, "MMMCMXCIXI", "I");
+	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_right_oper_to_big
+	add(result, "I", "MMMCMXCIXI");
+	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_left_oper_empty
+	add(result, "", "XI");
+	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_right_oper_empty
+	add(result, "XI", "");
+	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_left_oper_not_roman
+	add(result, "xi", "XI");
+	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_right_oper_not_roman
+	add(result, "XI", "abc");
+	ck_assert_str_eq(result, "ERROR");
