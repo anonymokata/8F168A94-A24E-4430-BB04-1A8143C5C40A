@@ -69,3 +69,9 @@ char result[100];
 #test twenty_plus_twenty_is_forty
 	add(result, "XX", "XX");
 	ck_assert_str_eq(result, "XL");
+#test fifteen_plus_twenty_five_is_forty
+	add(result, "XV", "XXV");
+	ck_assert_str_eq(result, "XL");
+#test forty_plus_ten_is_fifty
+	add(result, "XL", "X");
+	ck_assert_str_eq(result, "L");
