@@ -1,6 +1,3 @@
-#include <check.h>
-#include "calculator.h"
-
 char result[100];
 
 #test one_plus_one_is_two

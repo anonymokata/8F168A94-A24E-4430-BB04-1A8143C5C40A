@@ -1,0 +1,14 @@
+#test I_is_one
+	ck_assert_int_eq(convert_roman_char_to_dec("I"), 1);
+#test V_is_five
+	ck_assert_int_eq(convert_roman_char_to_dec("V"), 5);
+#test X_is_ten
+	ck_assert_int_eq(convert_roman_char_to_dec("X"), 10);
+#test L_is_fifty
+	ck_assert_int_eq(convert_roman_char_to_dec("L"), 50);
+#test C_is_onehundred
+	ck_assert_int_eq(convert_roman_char_to_dec("C"), 100);
+#test D_is_fivehundred
+	ck_assert_int_eq(convert_roman_char_to_dec("D"), 500);
+#test M_is_onethousand
+	ck_assert_int_eq(convert_roman_char_to_dec("M"), 1000);
