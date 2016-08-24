@@ -30,19 +30,25 @@ int compare_roman_chars(const void *a, const void *b)
 
 void contract(char *result)
 {
+	char *patterns[12][2] = { 
+				{"CCCCC", "D"}, 
+				{"XXXXX", "L"}, 
+				{"IIIII", "V"},
+				{"DD", "M"},
+				{"LL", "C"},
+				{"VV", "X"},
+				{"DCCCC", "CM"},
+				{"CCCC", "CD"},
+				{"LXXXX", "XC"},
+				{"XXXX", "XL"},
+				{"VIIII", "IX"},
+				{"IIII", "IV"}
+			       };
 	qsort(result, strlen(result), sizeof(char), compare_roman_chars);
-	replace(result, "CCCCC", "D");
-	replace(result, "XXXXX", "L");
-	replace(result, "IIIII", "V");
-	replace(result, "DD", "M");
-	replace(result, "LL", "C");
-	replace(result, "VV", "X");
-	replace(result, "DCCCC", "CM");
-	replace(result, "CCCC", "CD");
-	replace(result, "LXXXX", "XC");
-	replace(result, "XXXX", "XL");
-	replace(result, "VIIII", "IX");
-	replace(result, "IIII", "IV");
+	for(int pidx = 0; pidx < 12; pidx++)
+	{
+		replace(result, patterns[pidx][0], patterns[pidx][1]);
+	}
 }
 
 void expand(char *operand, const char *oper)
