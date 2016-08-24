@@ -29,6 +29,7 @@ int compare_roman_chars(const void *a, const void *b)
 void contract(char *result)
 {
 	qsort(result, strlen(result), sizeof(char), compare_roman_chars);
+	replace(result, "VIIII", "IX");
 	replace(result, "IIIII", "V");
 	replace(result, "IIII", "IV");
 	replace(result, "VV", "X");
