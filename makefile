@@ -27,6 +27,7 @@ coverage: checkmk
 	$(GCOV) calculator.c
 	$(GCOV) convert_roman.c
 	$(GCOV) validate.c
+	$(GCOV) adjust_roman.c
 
 run:
 	./$(TARGET)
