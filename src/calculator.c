@@ -93,9 +93,8 @@ void add(char *result, const char *left_oper, const char *right_oper)
 		strcpy(result, left_operand);
 		strcpy(result + strlen(left_operand), right_operand);
 
-		contract(result);
-
 		validate(result);
+		contract(result);
 	} else {
 		strcpy(result, "ERROR");
 	}
