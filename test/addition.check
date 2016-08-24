@@ -117,3 +117,6 @@ char result[100];
 #test twothousand_plus_onethousand_is_threethousand
 	add(result, "MM", "M");
 	ck_assert_str_eq(result, "MMM");
+#test MCLXXIV_plus_CXXXIX_is_MCCCXIII
+	add(result, "MCLXXIV", "CXXXIX");
+	ck_assert_str_eq(result, "MCCCXIII");
