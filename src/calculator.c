@@ -87,3 +87,7 @@ void add(char *result, const char *left_oper, const char *right_oper)
 	}
 }
 
+void subtract(char *result, const char *left_opr, const char *right_opr)
+{
+	strcpy(result, "I");
+}

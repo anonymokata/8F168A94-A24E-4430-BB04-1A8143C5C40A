@@ -25,6 +25,8 @@ coverage: checkmk
 	$(CC) $(CFLAGS) $(GCOV_FLAGS) -o $(TARGET)_gcov $(SOURCES) $(TEST_SOURCES) $(LIBS) -I src
 	./$(TARGET)_gcov
 	$(GCOV) calculator.c
+	$(GCOV) convert_roman.c
+	$(GCOV) validate.c
 
 run:
 	./$(TARGET)
