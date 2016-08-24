@@ -87,3 +87,9 @@ char result[100];
 #test ninty_plus_one_is_ninty_one
 	add(result, "XC", "I");
 	ck_assert_str_eq(result, "XCI");
+#test onehundred_plus_twenty_nine_is_onehundredandtwentynine
+	add(result, "C", "XXIX");
+	ck_assert_str_eq(result, "CXXIX");
+#test twohundred_plus_twohunded_is_fourhundred
+	add(result, "CC", "CC");
+	ck_assert_str_eq(result, "CD");
