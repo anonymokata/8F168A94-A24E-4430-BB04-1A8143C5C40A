@@ -21,3 +21,6 @@ char result[100];
 #test four_plus_one_is_five
 	add(result, "IV", "I");
 	ck_assert_str_eq(result, "V");
+#test one_plus_four_is_five
+	add(result, "I", "IV");
+	ck_assert_str_eq(result, "V");
