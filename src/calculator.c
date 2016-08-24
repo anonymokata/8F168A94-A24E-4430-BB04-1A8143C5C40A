@@ -28,17 +28,17 @@ int compare_roman_chars(const void *a, const void *b)
 void contract(char *result)
 {
 	qsort(result, strlen(result), sizeof(char), compare_roman_chars);
-	replace(result, "IIIII", "V");
-	replace(result, "VIIII", "IX");
-	replace(result, "IIII", "IV");
-	replace(result, "VV", "X");
-	replace(result, "XXXXX", "L");
-	replace(result, "LXXXX", "XC");
-	replace(result, "XXXX", "XL");
 	replace(result, "CCCCC", "D");
+	replace(result, "XXXXX", "L");
+	replace(result, "IIIII", "V");
 	replace(result, "DD", "M");
+	replace(result, "VV", "X");
 	replace(result, "DCCCC", "CM");
 	replace(result, "CCCC", "CD");
+	replace(result, "LXXXX", "XC");
+	replace(result, "XXXX", "XL");
+	replace(result, "VIIII", "IX");
+	replace(result, "IIII", "IV");
 }
 
 void expand(char *operand, const char *oper)
