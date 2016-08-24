@@ -51,3 +51,12 @@ char result[100];
 #test one_plus_nine_is_ten
 	add(result, "I", "IX");
 	ck_assert_str_eq(result, "X");
+#test five_plus_five_is_ten
+	add(result, "V", "V");
+	ck_assert_str_eq(result, "X");
+#test three_plus_seven_is_ten
+	add(result, "III", "VII");
+	ck_assert_str_eq(result, "X");
+#test eight_plus_two_is_ten
+	add(result, "VIII", "II");
+	ck_assert_str_eq(result, "X");
