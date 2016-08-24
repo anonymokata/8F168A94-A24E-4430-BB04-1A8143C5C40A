@@ -33,6 +33,7 @@ void contract(char *result)
 	replace(result, "IIII", "IV");
 	replace(result, "VV", "X");
 	replace(result, "XXXXX", "L");
+	replace(result, "LXXXX", "XC");
 	replace(result, "XXXX", "XL");
 }
 
