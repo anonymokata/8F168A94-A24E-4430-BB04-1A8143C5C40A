@@ -12,3 +12,5 @@
 	ck_assert_int_eq(convert_roman_char_to_dec("D"), 500);
 #test M_is_onethousand
 	ck_assert_int_eq(convert_roman_char_to_dec("M"), 1000);
+#test non_roman_is_zero
+	ck_assert_int_eq(convert_roman_char_to_dec("A"), 0);

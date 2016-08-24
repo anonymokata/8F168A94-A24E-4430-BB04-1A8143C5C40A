@@ -1,3 +1,4 @@
+#include "validate.h"
 #include "convert_roman.h"
 #include "calculator.h"
 #include <string.h>
@@ -51,19 +52,6 @@ void expand(char *operand, const char *oper)
 	replace(operand, "XL", "XXXX");
 	replace(operand, "IX", "VIIII");
 	replace(operand, "IV", "IIII");
-}
-
-void validate(char *result)
-{
-	int sum = 0;
-	for(int idx = 0; idx < strlen(result); idx++)
-	{
-		sum += convert_roman_char_to_dec(result+idx);
-	}
-	if (3999 < sum)
-	{
-		strcpy(result, "ERROR");
-	}
 }
 
 void add(char *result, const char *left_oper, const char *right_oper)

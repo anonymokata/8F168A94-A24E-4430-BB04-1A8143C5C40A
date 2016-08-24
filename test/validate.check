@@ -1,0 +1,21 @@
+#define BUFFER_SIZE 100
+#test values_over_3999_return_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "MMMCMXCIX");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test chars_must_be_valid_roman_numerals
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "A");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test chars_must_be_uppercase
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "iii");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test arabic_numbers_arent_roman_numerals
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "123");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");

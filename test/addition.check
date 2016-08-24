@@ -120,6 +120,6 @@ char result[100];
 #test MCLXXIV_plus_CXXXIX_is_MCCCXIII
 	add(result, "MCLXXIV", "CXXXIX");
 	ck_assert_str_eq(result, "MCCCXIII");
-#test sums_over_3999_return_error
+#test cannot_exceed_3999_in_result
 	add(result, "MMMCMXCIX", "I");
 	ck_assert_str_eq(result, "ERROR");
