@@ -1,7 +1,12 @@
 #define BUFFER_SIZE 100
-#test values_over_3999_return_error
+#test values_3999_return_ok
 	char buffer[BUFFER_SIZE];
 	strcpy(buffer, "MMMCMXCIX");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "MMMCMXCIX");
+#test values_over_3999_return_ok
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "MMMCMXCIXI");
 	validate(buffer);
 	ck_assert_str_eq(buffer, "ERROR");
 #test chars_must_be_valid_roman_numerals
