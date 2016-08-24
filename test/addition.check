@@ -9,9 +9,13 @@ char result[100];
 #test one_plus_two_is_three
 	add(result, "II", "I");
 	ck_assert_str_eq(result, "III");
-#test two_plus_two
+#test two_plus_two_is_four
 	add(result, "II", "II");
 	ck_assert_str_eq(result, "IV");
-#test two_plus_three
+#test two_plus_three_is_five
 	add(result, "II", "III");
 	ck_assert_str_eq(result, "V");
+#test three_plus_three_is_six
+	add(result, "III", "III");
+	ck_assert_str_eq(result, "VI");
+
