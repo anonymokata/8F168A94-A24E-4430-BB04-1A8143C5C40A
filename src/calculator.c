@@ -53,6 +53,19 @@ void expand(char *operand, const char *oper)
 	replace(operand, "IV", "IIII");
 }
 
+void validate(char *result)
+{
+	int sum = 0;
+	for(int idx = 0; idx < strlen(result); idx++)
+	{
+		sum += convert_roman_char_to_dec(result+idx);
+	}
+	if (3999 < sum)
+	{
+		strcpy(result, "ERROR");
+	}
+}
+
 void add(char *result, const char *left_oper, const char *right_oper)
 {
 	char left_operand[BUFFER_SIZE]; 
@@ -65,5 +78,7 @@ void add(char *result, const char *left_oper, const char *right_oper)
 	strcpy(result + strlen(left_operand), right_operand);
 
 	contract(result);
+
+	validate(result);
 }
 
