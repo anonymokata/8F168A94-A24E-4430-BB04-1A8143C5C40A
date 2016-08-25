@@ -10,3 +10,6 @@
 #test five_minus_four_is_one
 	subtract(result, "V", "IV");
 	ck_assert_str_eq(result, "I");
+#test ten_minus_nine_is_one
+	subtract(result, "X", "IX");
+	ck_assert_str_eq(result, "I");

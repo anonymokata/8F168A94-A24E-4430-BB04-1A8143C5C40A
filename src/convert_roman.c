@@ -23,6 +23,7 @@ const char * expansion_of(char roman_char)
 	switch(roman_char)
 	{
 		case 'V' : value = "IIIII"; break;
+		case 'X' : value = "VV"; break;
 		default : value = ""; break;
 	}
 	return value;
