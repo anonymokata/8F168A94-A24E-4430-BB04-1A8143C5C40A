@@ -34,7 +34,7 @@ coverage: checkmk
 	$(GCOV) adjust_roman.c
 
 splint:
-	splint +unixlib -compdef -mayaliasunique -I src src/*.c | tee all.splint
+	splint +unixlib -compdef -mayaliasunique -observertrans -statictrans -mustfreefresh -I src src/*.c | tee all.splint
 
 cli: clean
 	$(CC) $(CFLAGS) -o $(CLI_TARGET) $(CLI_SOURCES) $(LIBS) -I src

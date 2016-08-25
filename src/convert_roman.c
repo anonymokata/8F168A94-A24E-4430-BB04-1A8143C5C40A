@@ -17,20 +17,18 @@ int convert_roman_char_to_dec(char *c) {
 	return value;
 }
 
-static const char *expansions[] = { "IIIII", "VV", "XXXXX", "LL", "CCCCC", "DD", "" };
-
 static const char *expansion_of(char roman_char)
 {
 	const char *value;
 	switch(roman_char)
 	{
-		case 'V' : value = expansions[0]; break;
-		case 'X' : value = expansions[1]; break;
-		case 'L' : value = expansions[2]; break;
-		case 'C' : value = expansions[3]; break;
-		case 'D' : value = expansions[4]; break;
-		case 'M' : value = expansions[5]; break;
-		default  : value = expansions[6]; break;
+		case 'V' : value = "IIIII"; break;
+		case 'X' : value = "VV"; break;
+		case 'L' : value = "XXXXX"; break;
+		case 'C' : value = "LL"; break;
+		case 'D' : value = "CCCCC"; break;
+		case 'M' : value = "DD"; break;
+		default  : value = ""; break;
 	}
 	return value;
 }
