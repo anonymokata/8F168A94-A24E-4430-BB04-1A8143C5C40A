@@ -16,6 +16,9 @@
 #test fifty_minus_fortynine_is_one
 	subtract(result, "L", "XLIX");
 	ck_assert_str_eq(result, "I");
-#test onehundres_minus_nintynine_is_one
+#test onehundred_minus_nintynine_is_one
 	subtract(result, "C", "XCIX");
 	ck_assert_str_eq(result, "I");
+#test fivehundred_minus_fourhundred_is_onehundred
+	subtract(result, "D", "CD");
+	ck_assert_str_eq(result, "C");
