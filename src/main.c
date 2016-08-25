@@ -25,16 +25,16 @@ int main(int argc, const char* argv[])
 			break;
 		case 2:
 			{
-				left_operand = argv[idx];
-				operator = argv[idx + 1];
-				right_operand = argv[idx + 2];
+				left_operand = argv[idx - 1];
+				operator = argv[idx];
+				right_operand = argv[idx + 1];
 			}
 			break;
 		case 3:
 			{
-				left_operand = argv[idx];
-				right_operand = argv[idx + 1];
-				operator = argv[idx + 2];
+				left_operand = argv[idx - 2];
+				right_operand = argv[idx - 1];
+				operator = argv[idx];
 			}
 			break;
 		default:
