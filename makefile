@@ -29,6 +29,9 @@ coverage: checkmk
 	$(GCOV) validate.c
 	$(GCOV) adjust_roman.c
 
+splint:
+	splint +unixlib -compdef -mayaliasunique -I src src/*.c | tee all.splint
+
 run:
 	./$(TARGET)
 

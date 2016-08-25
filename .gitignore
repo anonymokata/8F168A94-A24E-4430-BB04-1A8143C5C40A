@@ -2,3 +2,4 @@ all_tests
 all_tests_gcov
 *_tests.c
 *.g???
+*.splint
