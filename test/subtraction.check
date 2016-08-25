@@ -13,3 +13,6 @@
 #test ten_minus_nine_is_one
 	subtract(result, "X", "IX");
 	ck_assert_str_eq(result, "I");
+#test fifty_minus_fortynine_is_one
+	subtract(result, "L", "XLIX");
+	ck_assert_str_eq(result, "I");
