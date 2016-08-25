@@ -7,7 +7,7 @@
 #define MAX_ROMAN 3999
 #define ROMAN_CHARS "IVXLCDM"
 
-bool validate_value_in_range(char *result)
+bool validate_value_in_range(const char *result)
 {
 	char buffer[strlen(result)*2];
 	expand(buffer, result);
@@ -20,7 +20,7 @@ bool validate_value_in_range(char *result)
 	return 0 < sum_of_digits && sum_of_digits <= MAX_ROMAN;
 }
 
-bool validate_is_roman_number(char *result)
+bool validate_is_roman_number(const char *result)
 {
 	const char VALID_CHARS[] = ROMAN_CHARS;
 	bool all_roman_chars = true;
@@ -34,8 +34,18 @@ bool validate_is_roman_number(char *result)
 
 void validate(char *result)
 {
-	if (!validate_value_in_range(result) || !validate_is_roman_number(result))
+	if (0u == strlen(result) || !validate_value_in_range(result) || !validate_is_roman_number(result))
 	{
 		strcpy(result, "ERROR");
 	} 
+}
+
+bool validate_inputs(const char *left_oper, const char *right_oper)
+{
+	bool valid = true;
+	if (NULL == left_oper || NULL == right_oper || 0u == strlen(left_oper) || 0u == strlen(right_oper) || !validate_is_roman_number(left_oper) || !validate_is_roman_number(right_oper) || !validate_value_in_range(left_oper) || !validate_value_in_range(right_oper)) 
+	{
+		valid = false;
+	}
+	return valid;
 }

@@ -118,30 +118,30 @@
 #test MCLXXIV_plus_CXXXIX_is_MCCCXIII
 	add(result, "MCLXXIV", "CXXXIX");
 	ck_assert_str_eq(result, "MCCCXIII");
-#test cannot_exceed_3999_in_result
+#test add_cannot_exceed_3999_in_result
 	add(result, "MMMCMXCIX", "I");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_left_oper_to_big
-	add(result, "MMMCMXCIXI", "I");
+#test add_errors_on_invalid_input_left_oper_to_big
+	add(result, "MMMM", "I");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_right_oper_to_big
-	add(result, "I", "MMMCMXCIXI");
+#test add_errors_on_invalid_input_right_oper_to_big
+	add(result, "I", "MMMM");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_left_oper_empty
+#test add_errors_on_invalid_input_left_oper_empty
 	add(result, "", "XI");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_right_oper_empty
+#test add_errors_on_invalid_input_right_oper_empty
 	add(result, "XI", "");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_left_oper_null
+#test add_errors_on_invalid_input_left_oper_null
 	add(result, NULL, "X");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_right_oper_null
+#test add_errors_on_invalid_input_right_oper_null
 	add(result, "X", NULL);
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_left_oper_not_roman
+#test add_errors_on_invalid_input_left_oper_not_roman
 	add(result, "xi", "XI");
 	ck_assert_str_eq(result, "ERROR");
-#test errors_on_invalid_input_right_oper_not_roman
+#test add_errors_on_invalid_input_right_oper_not_roman
 	add(result, "XI", "abc");
 	ck_assert_str_eq(result, "ERROR");

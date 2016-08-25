@@ -7,14 +7,9 @@
 
 #define BUFFER_SIZE 100
 
-bool validate_inputs(const char *left_oper, const char *right_oper)
+void set_error(char *str)
 {
-	bool valid = true;
-	if (NULL == left_oper || NULL == right_oper || 0u == strlen(left_oper) || 0u == strlen(right_oper)) 
-	{
-		valid = false;
-	}
-	return valid;
+	strcpy(str, "ERROR");
 }
 
 void add(char *result, const char *left_oper, const char *right_oper)
@@ -35,7 +30,7 @@ void add(char *result, const char *left_oper, const char *right_oper)
 	} 
 	else 
 	{
-		strcpy(result, "ERROR");
+		set_error(result);
 	}
 }
 
@@ -44,22 +39,29 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 	char left_operand[BUFFER_SIZE];
 	char right_operand[BUFFER_SIZE];
 
-	expand(left_operand, left_oper);
-	expand(right_operand, right_oper);
-	cancel_like_terms(left_operand, right_operand);
-	expand_terms(left_operand, right_operand);
-	do
+	if (validate_inputs(left_oper, right_oper))
 	{
-		while(cancel_like_terms(left_operand, right_operand));
-	}
-	while(expand_terms(left_operand, right_operand));
-	if (0 < strlen(right_operand))
-	{
-		strcpy(result, "ERROR");
-	}
-	else
-	{
+		expand(left_operand, left_oper);
+		validate(left_operand);
+		expand(right_operand, right_oper);
+		validate(right_operand);
+		cancel_like_terms(left_operand, right_operand);
+		expand_terms(left_operand, right_operand);
+		do
+		{
+			while(cancel_like_terms(left_operand, right_operand));
+		}
+		while(expand_terms(left_operand, right_operand));
 		strcpy(result, left_operand);
 		contract(result);
+		validate(result);
+		if (0 < strlen(right_operand))
+		{
+			set_error(result);
+		}
+	}
+	else 
+	{
+		set_error(result);
 	}
 }

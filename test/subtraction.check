@@ -28,3 +28,27 @@
 #test cannot_be_negative
 	subtract(result, "X", "C");
 	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_left_oper_to_big
+	subtract(result, "MMMM", "I");
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_right_oper_to_big
+	subtract(result, "I", "MMMM");
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_left_oper_empty
+	subtract(result, "", "XI");
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_right_oper_empty
+	subtract(result, "XI", "");
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_left_oper_null
+	subtract(result, NULL, "X");
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_right_oper_null
+	subtract(result, "X", NULL);
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_left_oper_not_roman
+	subtract(result, "xi", "XI");
+	ck_assert_str_eq(result, "ERROR");
+#test sub_errors_on_invalid_input_right_oper_not_roman
+	subtract(result, "XI", "abc");
+	ck_assert_str_eq(result, "ERROR");
