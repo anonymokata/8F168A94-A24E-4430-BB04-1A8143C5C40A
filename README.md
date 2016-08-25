@@ -69,3 +69,21 @@ As a Roman bookkeeper, I want to be able to subtract one number from another. So
 
 * build check from source
 
+* added splint to check validity of code (static analysis)
+
+	* splint reports a memory issue (but I disagree)
+
+* used gcov for coverage information
+
+	* 100% except default cases of some switch statements
+
+* still concerned that I'm using a lot of memory with 5 100 byte buffers
+
+	* need to find the optimal size for those buffers at a minimum
+
+* added a CLI (untested) for entertainment/demo purposes.
+
+	* I might try to test drive this later
+
+
+
