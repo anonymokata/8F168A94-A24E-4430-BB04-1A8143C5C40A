@@ -136,6 +136,9 @@
 #test errors_on_invalid_input_left_oper_null
 	add(result, NULL, "X");
 	ck_assert_str_eq(result, "ERROR");
+#test errors_on_invalid_input_right_oper_null
+	add(result, "X", NULL);
+	ck_assert_str_eq(result, "ERROR");
 #test errors_on_invalid_input_left_oper_not_roman
 	add(result, "xi", "XI");
 	ck_assert_str_eq(result, "ERROR");
