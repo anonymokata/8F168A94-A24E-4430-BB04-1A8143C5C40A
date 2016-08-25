@@ -1,6 +1,5 @@
 stuff:
-  build: .
+  image: rncal
   volumes:
     - ~:/home/rich
-  #command: su - rich
   working_dir: /home/rich
