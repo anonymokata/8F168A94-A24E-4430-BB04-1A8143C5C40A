@@ -7,3 +7,6 @@
 #test four_minus_one_is_three
 	subtract(result, "IV", "I");
 	ck_assert_str_eq(result, "III");
+#test five_minus_four_is_one
+	subtract(result, "V", "IV");
+	ck_assert_str_eq(result, "I");
