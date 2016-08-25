@@ -5,9 +5,9 @@ LDFLAGS=
 LIBS=-lm -pthread -lrt
 CHKLIB=-lcheck
 CHECKMK=checkmk
-CLI_SOURCES=$(shell find src/. -maxdepth 1 -name "*.c")
-SOURCES=$(shell find src/. -maxdepth 1 -name "*.c")
-TEST_SOURCES=$(shell find test/. -maxdepth 1 -name "*.c")
+CLI_SOURCES=$(shell find src/. -maxdepth 1 ! -name all_tests.c -name "*.c")
+SOURCES=$(shell find src/. -maxdepth 1 ! -name main.c -name "*.c")
+TEST_SOURCES=$(shell find test/. -maxdepth 1 ! -name main.c -name "*.c")
 CHECKS=$(shell find test/. -maxdepth 1 -name "*.check")
 CLI_TARGET=romani
 TEST_TARGET=all_tests
@@ -16,7 +16,7 @@ GCOV_TEST_TARGET=all_tests_gcov
 GCOV=gcov
 GCOV_FLAGS=-fprofile-arcs -ftest-coverage
 
-all: splint test coverage
+all: cli splint test coverage
 
 checkmk: 
 	$(CHECKMK) $(CHECKS) > test/all_tests.c
