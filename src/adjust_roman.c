@@ -15,7 +15,7 @@ static void replace(char *result, const char *pattern, const char *replacement)
         }
 }
 
-static void replace_all(char *patterns[][2], int patternsc, char *result)
+static void replace_all(const char *patterns[][2], int patternsc, char *result)
 {
 	int pidx;
 	for(pidx = 0; pidx < patternsc; pidx++)
@@ -34,34 +34,34 @@ static int compare_roman_chars(const void *a, const void *b)
 
 void expand(char *operand, const char *oper)
 {
-	char *patterns[6][2] = {
-				{"CM", "DCCCC"},
-				{"CD", "CCCC"},
-				{"XC", "LXXXX"},
-				{"XL", "XXXX"},
-				{"IX", "VIIII"},
-				{"IV", "IIII"}
-			       };
+	const char *patterns[6][2] = {
+					{"CM", "DCCCC"},
+					{"CD", "CCCC"},
+					{"XC", "LXXXX"},
+					{"XL", "XXXX"},
+					{"IX", "VIIII"},
+					{"IV", "IIII"}
+				     };
 	strcpy(operand, oper);
 	replace_all(patterns, 6, operand);
 }
 
 void contract(char *result)
 {
-	char *patterns[12][2] = { 
-				{"CCCCC", "D"}, 
-				{"XXXXX", "L"}, 
-				{"IIIII", "V"},
-				{"DD", "M"},
-				{"LL", "C"},
-				{"VV", "X"},
-				{"DCCCC", "CM"},
-				{"CCCC", "CD"},
-				{"LXXXX", "XC"},
-				{"XXXX", "XL"},
-				{"VIIII", "IX"},
-				{"IIII", "IV"}
-			       };
+	const char *patterns[12][2] = { 
+					{"CCCCC", "D"}, 
+					{"XXXXX", "L"}, 
+					{"IIIII", "V"},
+					{"DD", "M"},
+					{"LL", "C"},
+					{"VV", "X"},
+					{"DCCCC", "CM"},
+					{"CCCC", "CD"},
+					{"LXXXX", "XC"},
+					{"XXXX", "XL"},
+					{"VIIII", "IX"},
+					{"IIII", "IV"}
+				      };
 	qsort(result, strlen(result), sizeof(char), compare_roman_chars);
 	replace_all(patterns, 12, result);
 }
