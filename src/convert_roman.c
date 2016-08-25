@@ -27,6 +27,7 @@ const char * expansion_of(char roman_char)
 		case 'L' : value = "XXXXX"; break;
 		case 'C' : value = "LL"; break;
 		case 'D' : value = "CCCCC"; break;
+		case 'M' : value = "DD"; break;
 		default : value = ""; break;
 	}
 	return value;

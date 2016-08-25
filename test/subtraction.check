@@ -22,3 +22,6 @@
 #test fivehundred_minus_fourhundred_is_onehundred
 	subtract(result, "D", "CD");
 	ck_assert_str_eq(result, "C");
+#test onethousand_minus_twohundred_is_eighthundred
+	subtract(result, "M", "CC");
+	ck_assert_str_eq(result, "DCCC");
