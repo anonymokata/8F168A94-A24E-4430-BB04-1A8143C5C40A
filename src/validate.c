@@ -43,7 +43,10 @@ void validate(char *result)
 bool validate_inputs(const char *left_oper, const char *right_oper)
 {
 	bool valid = true;
-	if (NULL == left_oper || NULL == right_oper || 0u == strlen(left_oper) || 0u == strlen(right_oper) || !validate_is_roman_number(left_oper) || !validate_is_roman_number(right_oper) || !validate_value_in_range(left_oper) || !validate_value_in_range(right_oper)) 
+	if (NULL == left_oper || NULL == right_oper || 
+	    0u == strlen(left_oper) || 0u == strlen(right_oper) || 
+	    !validate_is_roman_number(left_oper) || !validate_is_roman_number(right_oper) ||
+	    !validate_value_in_range(left_oper) || !validate_value_in_range(right_oper)) 
 	{
 		valid = false;
 	}
