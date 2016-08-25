@@ -32,7 +32,9 @@ void add(char *result, const char *left_oper, const char *right_oper)
 
 		validate(result);
 		contract(result);
-	} else {
+	} 
+	else 
+	{
 		strcpy(result, "ERROR");
 	}
 }
@@ -51,6 +53,13 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 		while(cancel_like_terms(left_operand, right_operand));
 	}
 	while(expand_terms(left_operand, right_operand));
-	strcpy(result, left_operand);
-	contract(result);
+	if (0 < strlen(right_operand))
+	{
+		strcpy(result, "ERROR");
+	}
+	else
+	{
+		strcpy(result, left_operand);
+		contract(result);
+	}
 }

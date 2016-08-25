@@ -25,3 +25,6 @@
 #test onethousand_minus_twohundred_is_eighthundred
 	subtract(result, "M", "CC");
 	ck_assert_str_eq(result, "DCCC");
+#test cannot_be_negative
+	subtract(result, "X", "C");
+	ck_assert_str_eq(result, "ERROR");
