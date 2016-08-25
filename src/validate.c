@@ -10,10 +10,10 @@
 static bool validate_value_in_range(const char *result)
 {
 	char buffer[strlen(result)*2];
-	expand(buffer, result);
 	int sum_of_digits = 0;
 	int idx;
-	for(idx = 0; idx < strlen(buffer); idx++)
+	expand(buffer, result);
+	for(idx = 0; idx < (int)strlen(buffer); idx++)
 	{
 		sum_of_digits += convert_roman_char_to_dec(&buffer[idx]);
 	}
@@ -25,7 +25,7 @@ static bool validate_is_roman_number(const char *result)
 	const char VALID_CHARS[] = ROMAN_CHARS;
 	bool all_roman_chars = true;
 	int idx;
-	for(idx = 0; idx < strlen(result); idx++)
+	for(idx = 0; idx < (int)strlen(result); idx++)
 	{
 		all_roman_chars &= (NULL != strchr(VALID_CHARS, result[idx]));
 	}

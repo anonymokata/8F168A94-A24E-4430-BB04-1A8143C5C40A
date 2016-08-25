@@ -29,7 +29,7 @@ static int compare_roman_chars(const void *a, const void *b)
 	int ia = convert_roman_char_to_dec((char *)a);
 	int ib = convert_roman_char_to_dec((char *)b);
 
-	return (ia < ib) - (ia > ib);
+	return (int)((ia < ib) - (ia > ib));
 }
 
 void expand(char *operand, const char *oper)

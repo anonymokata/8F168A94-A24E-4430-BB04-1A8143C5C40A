@@ -47,13 +47,13 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 		validate(right_operand);
 		do
 		{
-			while(cancel_like_terms(left_operand, right_operand));
+			while(0 != cancel_like_terms(left_operand, right_operand));
 		}
-		while(expand_terms(left_operand, right_operand));
+		while(0 != expand_terms(left_operand, right_operand));
 		strcpy(result, left_operand);
 		contract(result);
 		validate(result);
-		if (0 < strlen(right_operand))
+		if (0 < (int)strlen(right_operand))
 		{
 			set_error(result);
 		}
