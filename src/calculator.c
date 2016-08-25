@@ -67,8 +67,8 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 	char left_operand[BUFFER_SIZE];
 	char right_operand[BUFFER_SIZE];
 
-	strcpy(left_operand, left_oper);
-	strcpy(right_operand, right_oper);
+	expand(left_operand, left_oper);
+	expand(right_operand, right_oper);
 	cancel_like_terms(left_operand, right_operand);
 	strcpy(result, left_operand);
 }
