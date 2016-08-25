@@ -35,8 +35,9 @@ void delete_char(char *str, int idx)
 	strcpy(&str[idx], &str[idx + 1]);
 }
 
-void cancel_like_terms(char *left_operand, char *right_operand)
+int cancel_like_terms(char *left_operand, char *right_operand)
 {
+	int cancel_count = 0;
 	size_t left_oper_length = strlen(left_operand);
 	size_t right_oper_length = strlen(right_operand);
 	int right_oper_offset;
@@ -50,10 +51,12 @@ void cancel_like_terms(char *left_operand, char *right_operand)
 			{
 				delete_char(left_operand, left_oper_offset);
 				delete_char(right_operand, right_oper_offset);
+				cancel_count++;
 				break;
 			}
 		}
 	}
+	return cancel_count;
 }
 
 void replace_numeral_with_expansion(char *roman_numeral, int offset) 
@@ -63,8 +66,9 @@ void replace_numeral_with_expansion(char *roman_numeral, int offset)
 	strcpy(&roman_numeral[offset], expansion);
 }
 
-void expand_terms(char *left_operand, char *right_operand)
+int expand_terms(char *left_operand, char *right_operand)
 {
+	int expansion_count = 0;
 	if (0 < strlen(right_operand))
 	{
 		size_t left_oper_length = strlen(left_operand);
@@ -77,9 +81,11 @@ void expand_terms(char *left_operand, char *right_operand)
 			if (convert_roman_char_to_dec(&candidate) < convert_roman_char_to_dec(&left_operand[left_oper_offset])) 
 			{
 				replace_numeral_with_expansion(left_operand, left_oper_offset);
+				expansion_count++;
 				break;
 			}
 		}
 	}
+	return expansion_count;
 }
 

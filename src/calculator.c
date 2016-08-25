@@ -46,11 +46,11 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 	expand(right_operand, right_oper);
 	cancel_like_terms(left_operand, right_operand);
 	expand_terms(left_operand, right_operand);
-	cancel_like_terms(left_operand, right_operand);
-	expand_terms(left_operand, right_operand);
-	cancel_like_terms(left_operand, right_operand);
-	expand_terms(left_operand, right_operand);
-	cancel_like_terms(left_operand, right_operand);
+	do
+	{
+		while(cancel_like_terms(left_operand, right_operand));
+	}
+	while(expand_terms(left_operand, right_operand));
 	strcpy(result, left_operand);
 	contract(result);
 }
