@@ -7,7 +7,7 @@
 
 #define BUFFER_SIZE 100
 
-void set_error(char *str)
+static void set_error(char *str)
 {
 	strcpy(str, "ERROR");
 }
@@ -45,8 +45,6 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 		validate(left_operand);
 		expand(right_operand, right_oper);
 		validate(right_operand);
-		cancel_like_terms(left_operand, right_operand);
-		expand_terms(left_operand, right_operand);
 		do
 		{
 			while(cancel_like_terms(left_operand, right_operand));

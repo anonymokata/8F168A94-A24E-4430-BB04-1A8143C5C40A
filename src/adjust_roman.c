@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void replace(char *result, const char *pattern, const char *replacement)
+static void replace(char *result, const char *pattern, const char *replacement)
 {
         char *sub_string_pointer;
         if (NULL != (sub_string_pointer = strstr(result, pattern)))
@@ -15,7 +15,7 @@ void replace(char *result, const char *pattern, const char *replacement)
         }
 }
 
-void replace_all(char *patterns[][2], int patternsc, char *result)
+static void replace_all(char *patterns[][2], int patternsc, char *result)
 {
 	int pidx;
 	for(pidx = 0; pidx < patternsc; pidx++)
@@ -24,7 +24,7 @@ void replace_all(char *patterns[][2], int patternsc, char *result)
 	}
 }
 
-int compare_roman_chars(const void *a, const void *b)
+static int compare_roman_chars(const void *a, const void *b)
 {
 	int ia = convert_roman_char_to_dec((char *)a);
 	int ib = convert_roman_char_to_dec((char *)b);

@@ -17,7 +17,7 @@ int convert_roman_char_to_dec(char *c) {
 	return value;
 }
 
-const char * expansion_of(char roman_char)
+static const char * expansion_of(char roman_char)
 {
 	char *value;
 	switch(roman_char)
@@ -33,7 +33,7 @@ const char * expansion_of(char roman_char)
 	return value;
 }
 
-void delete_char(char *str, int idx)
+static void delete_char(char *str, int idx)
 {
 	strcpy(&str[idx], &str[idx + 1]);
 }
@@ -62,7 +62,7 @@ int cancel_like_terms(char *left_operand, char *right_operand)
 	return cancel_count;
 }
 
-void replace_numeral_with_expansion(char *roman_numeral, int offset) 
+static void replace_numeral_with_expansion(char *roman_numeral, int offset) 
 {
 	const char *expansion = expansion_of(roman_numeral[offset]);
 	strcpy(&roman_numeral[offset + strlen(expansion)], &roman_numeral[offset + 1]);

@@ -7,7 +7,7 @@
 #define MAX_ROMAN 3999
 #define ROMAN_CHARS "IVXLCDM"
 
-bool validate_value_in_range(const char *result)
+static bool validate_value_in_range(const char *result)
 {
 	char buffer[strlen(result)*2];
 	expand(buffer, result);
@@ -20,7 +20,7 @@ bool validate_value_in_range(const char *result)
 	return 0 < sum_of_digits && sum_of_digits <= MAX_ROMAN;
 }
 
-bool validate_is_roman_number(const char *result)
+static bool validate_is_roman_number(const char *result)
 {
 	const char VALID_CHARS[] = ROMAN_CHARS;
 	bool all_roman_chars = true;
