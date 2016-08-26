@@ -12,6 +12,8 @@ CHECKS=$(shell find test/. -maxdepth 1 -name "*.check" | sort)
 CLI_TARGET=romani
 TEST_TARGET=all_tests
 GCOV_TEST_TARGET=all_tests_gcov
+SPLINT=splint
+SPLINT_FLAGS=+unixlib -compdef -mayaliasunique
 
 GCOV=gcov
 GCOV_FLAGS=-fprofile-arcs -ftest-coverage
@@ -34,7 +36,7 @@ coverage: checkmk
 	$(GCOV) adjust_roman.c
 
 splint:
-	splint +unixlib -compdef -mayaliasunique -observertrans -statictrans -mustfreefresh -I src src/*.c | tee all.splint
+	$(SPLINT) $(SPLINT_FLAGS) -I src $(SOURCES) | tee all.splint
 
 cli: clean
 	$(CC) $(CFLAGS) -o $(CLI_TARGET) $(CLI_SOURCES) $(LIBS) -I src

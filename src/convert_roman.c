@@ -17,22 +17,6 @@ int convert_roman_char_to_dec(char *c) {
 	return value;
 }
 
-static const char *expansion_of(char roman_char)
-{
-	const char *value;
-	switch(roman_char)
-	{
-		case 'V' : value = "IIIII"; break;
-		case 'X' : value = "VV"; break;
-		case 'L' : value = "XXXXX"; break;
-		case 'C' : value = "LL"; break;
-		case 'D' : value = "CCCCC"; break;
-		case 'M' : value = "DD"; break;
-		default  : value = ""; break;
-	}
-	return value;
-}
-
 static void delete_char(char *str, int idx)
 {
 	strcpy(&str[idx], &str[idx + 1]);
@@ -64,9 +48,30 @@ int cancel_like_terms(char *left_operand, char *right_operand)
 
 static void replace_numeral_with_expansion(char *roman_numeral, int offset) 
 {
-	const char *expansion = expansion_of(roman_numeral[offset]);
+	const char *expansion;
+	const char *expansions[7] = { 
+					"IIIII",
+					"VV",
+					"XXXXX",
+					"LL",
+					"CCCCC",
+					"DD",
+					""
+				    };
+	int idx;
+	switch(roman_numeral[offset])
+	{
+		case 'V' : idx = 0; break;
+		case 'X' : idx = 1; break;
+		case 'L' : idx = 2; break;
+		case 'C' : idx = 3; break;
+		case 'D' : idx = 4; break;
+		case 'M' : idx = 5; break;
+		default  : idx = 6; break;
+	}
+	expansion = expansions[idx];
 	strcpy(&roman_numeral[offset + strlen(expansion)], &roman_numeral[offset + 1]);
-	strcpy(&roman_numeral[offset], expansion);
+	memcpy(&roman_numeral[offset], expansion, strlen(expansion));
 }
 
 int expand_terms(char *left_operand, char *right_operand)
