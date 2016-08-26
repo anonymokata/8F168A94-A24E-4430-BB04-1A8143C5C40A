@@ -1,4 +1,5 @@
 #include "convert_roman.h"
+#include "adjust_roman.h"
 #include <string.h>
 
 int convert_roman_char_to_dec(char *c) {
@@ -48,19 +49,16 @@ int cancel_like_terms(char *left_operand, char *right_operand)
 
 static void replace_numeral_with_expansion(char *roman_numeral, int offset) 
 {
-	const char *expansion;
 	switch(roman_numeral[offset])
 	{
-		case 'V' : expansion = "IIIII"; break;
-		case 'X' : expansion = "VV"; break;
-		case 'L' : expansion = "XXXXX"; break;
-		case 'C' : expansion = "LL"; break;
-		case 'D' : expansion = "CCCCC"; break;
-		case 'M' : expansion = "DD"; break;
-		default  : expansion = ""; break;
+		case 'V' : replace(roman_numeral, "V", "IIIII"); break;
+		case 'X' : replace(roman_numeral, "X", "VV");    break;
+		case 'L' : replace(roman_numeral, "L", "XXXXX"); break;
+		case 'C' : replace(roman_numeral, "C", "LL");    break;
+		case 'D' : replace(roman_numeral, "D", "CCCCC"); break;
+		case 'M' : replace(roman_numeral, "M", "DD");    break;
+		default: break;
 	}
-	strcpy(&roman_numeral[offset + strlen(expansion)], &roman_numeral[offset + 1]);
-	strncpy(&roman_numeral[offset], expansion, strlen(expansion));
 }
 
 int expand_terms(char *left_operand, char *right_operand)

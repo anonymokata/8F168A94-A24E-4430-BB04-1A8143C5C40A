@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-static void replace(char *result, const char *pattern, const char *replacement)
+void replace(char *result, const char *pattern, const char *replacement)
 {
         char *sub_string_pointer;
         if (NULL != (sub_string_pointer = strstr(result, pattern)))
