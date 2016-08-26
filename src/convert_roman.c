@@ -60,7 +60,7 @@ static void replace_numeral_with_expansion(char *roman_numeral, int offset)
 		default  : expansion = ""; break;
 	}
 	strcpy(&roman_numeral[offset + strlen(expansion)], &roman_numeral[offset + 1]);
-	memcpy(&roman_numeral[offset], expansion, strlen(expansion));
+	strncpy(&roman_numeral[offset], expansion, strlen(expansion));
 }
 
 int expand_terms(char *left_operand, char *right_operand)

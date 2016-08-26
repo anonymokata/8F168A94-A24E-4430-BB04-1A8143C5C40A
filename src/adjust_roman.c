@@ -11,7 +11,7 @@ static void replace(char *result, const char *pattern, const char *replacement)
 		size_t pattern_length = strlen(pattern);
 		size_t replacement_length = strlen(replacement);
 		strcpy(&sub_string_pointer[replacement_length], &sub_string_pointer[pattern_length]);
-		memcpy(sub_string_pointer, replacement, replacement_length);
+		strncpy(sub_string_pointer, replacement, replacement_length);
         }
 }
 
