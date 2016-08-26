@@ -49,27 +49,16 @@ int cancel_like_terms(char *left_operand, char *right_operand)
 static void replace_numeral_with_expansion(char *roman_numeral, int offset) 
 {
 	const char *expansion;
-	const char *expansions[7] = { 
-					"IIIII",
-					"VV",
-					"XXXXX",
-					"LL",
-					"CCCCC",
-					"DD",
-					""
-				    };
-	int idx;
 	switch(roman_numeral[offset])
 	{
-		case 'V' : idx = 0; break;
-		case 'X' : idx = 1; break;
-		case 'L' : idx = 2; break;
-		case 'C' : idx = 3; break;
-		case 'D' : idx = 4; break;
-		case 'M' : idx = 5; break;
-		default  : idx = 6; break;
+		case 'V' : expansion = "IIIII"; break;
+		case 'X' : expansion = "VV"; break;
+		case 'L' : expansion = "XXXXX"; break;
+		case 'C' : expansion = "LL"; break;
+		case 'D' : expansion = "CCCCC"; break;
+		case 'M' : expansion = "DD"; break;
+		default  : expansion = ""; break;
 	}
-	expansion = expansions[idx];
 	strcpy(&roman_numeral[offset + strlen(expansion)], &roman_numeral[offset + 1]);
 	memcpy(&roman_numeral[offset], expansion, strlen(expansion));
 }
