@@ -32,9 +32,18 @@ static bool validate_is_roman_number(const char *result)
 	return all_roman_chars;
 }
 
+static bool is_roman_number(const char *str)
+{
+	if (NULL == str || 0u == strlen(str) || !validate_value_in_range(str) || !validate_is_roman_number(str))
+	{
+		return false;
+	}
+	return true;
+}
+
 void validate(char *result)
 {
-	if (0u == strlen(result) || !validate_value_in_range(result) || !validate_is_roman_number(result))
+	if (!is_roman_number(result))
 	{
 		strcpy(result, "ERROR");
 	} 
@@ -42,13 +51,5 @@ void validate(char *result)
 
 bool validate_inputs(const char *left_oper, const char *right_oper)
 {
-	bool valid = true;
-	if (NULL == left_oper || NULL == right_oper || 
-	    0u == strlen(left_oper) || 0u == strlen(right_oper) || 
-	    !validate_is_roman_number(left_oper) || !validate_is_roman_number(right_oper) ||
-	    !validate_value_in_range(left_oper) || !validate_value_in_range(right_oper)) 
-	{
-		valid = false;
-	}
-	return valid;
+	return is_roman_number(left_oper) && is_roman_number(right_oper);
 }
