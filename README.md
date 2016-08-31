@@ -86,4 +86,6 @@ As a Roman bookkeeper, I want to be able to subtract one number from another. So
 	* I might try to test drive this later
 
 
+* makefile assumes check is installed in /usr/local/lib
 
+	* makefile sets LD_LIBRARY_PATH=/usr/local/lib for compilations

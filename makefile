@@ -1,34 +1,44 @@
-LD_LIBRARY_PATH=/usr/local/lib
 CC=gcc
 CFLAGS=-Wall
 LDFLAGS=
 LIBS=-lm -pthread -lrt
+LD_LIBRARY_PATH=/usr/local/lib
+
 CHKLIB=-lcheck
 CHECKMK=checkmk
-CLI_SOURCES=$(shell find src/. -maxdepth 1 ! -name all_tests.c -name "*.c")
+
+CHECKS=$(shell find test/. -maxdepth 1 -name "*.check" | sort)
 SOURCES=$(shell find src/. -maxdepth 1 ! -name main.c -name "*.c")
 TEST_SOURCES=$(shell find test/. -maxdepth 1 ! -name main.c -name "*.c")
-CHECKS=$(shell find test/. -maxdepth 1 -name "*.check" | sort)
-CLI_TARGET=romani
 TEST_TARGET=all_tests
+
+CLI_SOURCES=$(shell find src/. -maxdepth 1 ! -name all_tests.c -name "*.c")
+CLI_TARGET=romani
+
 GCOV_TEST_TARGET=all_tests_gcov
+
 SPLINT=splint
 SPLINT_FLAGS=+unixlib -compdef -mayaliasunique
 
 GCOV=gcov
 GCOV_FLAGS=-fprofile-arcs -ftest-coverage
 
-all: cli splint test coverage
+all: splint test coverage
 
-checkmk: 
+have_check:
+	if [ -e $(LD_LIBRARY_PATH)/libcheck.a ]; then echo "libcheck.a ok!"; else echo "libcheck.a is not in $(LD_LIBRARY_PATH) as expected"; exit 1; fi;
+
+checkmk: have_check
 	$(CHECKMK) $(CHECKS) > test/all_tests.c
 
 test: checkmk
-	$(CC) $(CFLAGS) -o $(TEST_TARGET) $(SOURCES) $(TEST_SOURCES) $(CHKLIB) $(LIBS) -I src
+	export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH) 
+	$(CC) $(CFLAGS) -o $(TEST_TARGET) $(SOURCES) $(TEST_SOURCES) $(CHKLIB) $(LIBS) -I src 
 	./$(TEST_TARGET)
 
 coverage: checkmk
-	$(CC) $(CFLAGS) $(GCOV_FLAGS) -o $(GCOV_TEST_TARGET) $(SOURCES) $(TEST_SOURCES) $(CHKLIB) $(LIBS) -I src
+	export LD_LIBRARY_PATH=$(LD_LIBRARY_PATH) 
+	$(CC) $(CFLAGS) $(GCOV_FLAGS) -o $(GCOV_TEST_TARGET) $(SOURCES) $(TEST_SOURCES) $(CHKLIB) $(LIBS) -I src 
 	./$(GCOV_TEST_TARGET)
 	$(GCOV) calculator.c
 	$(GCOV) convert_roman.c
@@ -38,8 +48,8 @@ coverage: checkmk
 splint:
 	$(SPLINT) $(SPLINT_FLAGS) -I src $(SOURCES) | tee all.splint
 
-cli: clean
-	$(CC) $(CFLAGS) -o $(CLI_TARGET) $(CLI_SOURCES) $(LIBS) -I src
+cli: 
+	$(CC) $(CFLAGS) -o $(CLI_TARGET) $(CLI_SOURCES) demo/main.c $(LIBS) -I src
 
 .PHONY: clean
 clean:
