@@ -87,15 +87,14 @@ As you can see from the output,
 
 	* romani is for demo purposes only, the code is not test driven or checked by static analysis (thought it could have been)
 
+	* I added romani just so I could do exploratory testing. It actually revealed bugs in my validator, causing a rewrite.
+
 	* romani accepts input in pre-fix, in-fix, and post fix notation, for example
 
 ```bash
 		% ./romani + VI CCXI
 		CCXVII
-		
 ```
-
-	* I added romani just so I could do exploratory testing. It actually revealed bugs in my validator, causing a rewrite.
 
 ## Other notes
 
