@@ -39,3 +39,28 @@
 	strcpy(buffer, "CCCC");
 	validate(buffer);
 	ck_assert_str_eq(buffer, "ERROR");
+#test four_d_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "DDDD");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test four_l_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "LLLL");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test four_x_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "XXXX");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test four_v_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "VVVV");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test four_i_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "IIII");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
