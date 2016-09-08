@@ -29,3 +29,9 @@
 	strcpy(buffer, "");
 	validate(buffer);
 	ck_assert_str_eq(buffer, "ERROR");
+#test four_m_error
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "MMMM");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+
