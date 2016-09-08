@@ -1,0 +1,2 @@
+#test quads_are_illegal
+	ck_assert(!valid_rn("MMMM"));
