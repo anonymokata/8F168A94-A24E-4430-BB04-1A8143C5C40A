@@ -6,7 +6,7 @@
 	ck_assert_str_eq(buffer, "MMMCMXCIX");
 #test values_over_3999_return_ok
 	char buffer[BUFFER_SIZE];
-	strcpy(buffer, "MMMCMXCIXI");
+	strcpy(buffer, "MMMM");
 	validate(buffer);
 	ck_assert_str_eq(buffer, "ERROR");
 #test chars_must_be_valid_roman_numerals
@@ -22,5 +22,10 @@
 #test arabic_numbers_arent_roman_numerals
 	char buffer[BUFFER_SIZE];
 	strcpy(buffer, "123");
+	validate(buffer);
+	ck_assert_str_eq(buffer, "ERROR");
+#test empty_strings_arent_roman_numbers
+	char buffer[BUFFER_SIZE];
+	strcpy(buffer, "");
 	validate(buffer);
 	ck_assert_str_eq(buffer, "ERROR");
