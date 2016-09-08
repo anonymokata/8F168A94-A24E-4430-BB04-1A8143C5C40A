@@ -32,9 +32,52 @@ static bool validate_is_roman_number(const char *result)
 	return all_roman_chars;
 }
 
+static bool has_quads(const char *str)
+{
+	const char VALID_CHARS[] = ROMAN_CHARS;
+	int counts[strlen(ROMAN_CHARS)];
+	int idx, jdx;
+	for(idx = 0; idx < (int)strlen(ROMAN_CHARS); idx++)
+	{
+		counts[idx] = 0;
+	}
+	char last = '\0';
+	for(idx = 0; idx < (int)strlen(str); idx++)
+	{
+		for(jdx = 0; jdx < (int)strlen(ROMAN_CHARS); jdx++)
+		{
+			if (str[idx] == VALID_CHARS[jdx])
+			{
+				if (last == VALID_CHARS[jdx])
+				{
+					counts[jdx]++;
+				}
+				else
+				{
+					counts[jdx] = 1;
+					last = VALID_CHARS[jdx];
+				}
+			}
+		}
+		
+	}
+	for(idx = 0; idx < (int)strlen(ROMAN_CHARS); idx++)
+	{
+		if (counts[idx] > 3)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 static bool is_roman_number(const char *str)
 {
-	if (NULL == str || 0u == strlen(str) || !validate_value_in_range(str) || !validate_is_roman_number(str))
+	if (NULL == str || 
+            0u == strlen(str) || 
+            !validate_value_in_range(str) || 
+            !validate_is_roman_number(str) ||
+            has_quads(str))
 	{
 		return false;
 	}

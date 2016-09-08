@@ -25,8 +25,8 @@ void add(char *result, const char *left_oper, const char *right_oper)
 		strcpy(result, left_operand);
 		strcpy(&result[strlen(left_operand)], right_operand);
 
-		validate(result);
 		contract(result);
+		validate(result);
 	} 
 	else 
 	{
@@ -42,9 +42,7 @@ void subtract(char *result, const char *left_oper, const char *right_oper)
 	if (validate_inputs(left_oper, right_oper))
 	{
 		expand(left_operand, left_oper);
-		validate(left_operand);
 		expand(right_operand, right_oper);
-		validate(right_operand);
 		do
 		{
 			while(0 != cancel_like_terms(left_operand, right_operand));
