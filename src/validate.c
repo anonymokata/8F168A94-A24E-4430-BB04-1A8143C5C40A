@@ -37,11 +37,11 @@ static bool has_quads(const char *str)
 	const char VALID_CHARS[] = ROMAN_CHARS;
 	int counts[strlen(ROMAN_CHARS)];
 	int idx, jdx;
+	char last = '\0';
 	for(idx = 0; idx < (int)strlen(ROMAN_CHARS); idx++)
 	{
 		counts[idx] = 0;
 	}
-	char last = '\0';
 	for(idx = 0; idx < (int)strlen(str); idx++)
 	{
 		for(jdx = 0; jdx < (int)strlen(ROMAN_CHARS); jdx++)
