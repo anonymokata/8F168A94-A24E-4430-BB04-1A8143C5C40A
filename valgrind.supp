@@ -1,5 +1,5 @@
 {
-   SourceDestOverlap
+   Ignore_Source_and_destination_overlap_in_strcpy
    Memcheck:Overlap
    fun:strcpy
    fun:replace
@@ -7,4 +7,20 @@
    fun:contract
    fun:add
    fun:main
+}
+{
+   Ignore_Invalid_write_of_size_1
+   Memcheck:Addr1
+   fun:strcpy
+   fun:replace
+   fun:replace_all
+   fun:expand
+   fun:validate_value_in_range
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
 }
