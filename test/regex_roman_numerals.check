@@ -20,3 +20,5 @@
 	ck_assert(valid_rn("CCC"));
 #test cccc_can_not_start_us_off
 	ck_assert(!valid_rn("CCCC"));
+#test cd_is_valid
+	ck_assert(!valid_rn("CD"));
