@@ -40,3 +40,5 @@
 	ck_assert(valid_rn("XL"));
 #test just_x
 	ck_assert(valid_rn("X"));
+#test and_xx
+	ck_assert(valid_rn("XX"));
