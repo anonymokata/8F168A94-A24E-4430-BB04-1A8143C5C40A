@@ -15,7 +15,7 @@ In order to build the code you will need to run make. Below there are some notes
 
 * Assume check is installed in the traditional location /usr/local/lib
 
-* Assume make, gcc, splint, gcov, and checkmk are all installed as well
+* Assume make, gcc, splint, gcov, valgrind and checkmk are all installed as well
 
 * Assume pkg-config is installed too!
 
