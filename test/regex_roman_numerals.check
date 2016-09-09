@@ -4,5 +4,7 @@
 	ck_assert(valid_rn("MMM"));
 #test trip_m_can_be_followed_with_cm
 	ck_assert(valid_rn("MMMCM"));
-#test trip_m_can_also_be_followed_by_C
+#test trip_m_can_also_be_followed_by_c
 	ck_assert(valid_rn("MMMC"));
+#test trip_m_can_also_be_followed_by_cc
+	ck_assert(valid_rn("MMMCC"));
