@@ -5,7 +5,7 @@
 
 bool valid_rn(const char *str)
 {
-	const char *pattern = "^M{0,3}((CM|CD){0,1}|C{0,3})X{0,2}L?$";
+	const char *pattern = "^M{0,3}((CM|CD){0,1}|C{0,3})(X?L?|X{0,2})$";
 	regex_t regex;
 	int regexec_ = 0;
 	printf("valid_rn ? %s\n", str);

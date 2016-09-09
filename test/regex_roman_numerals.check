@@ -42,3 +42,5 @@
 	ck_assert(valid_rn("X"));
 #test and_xx
 	ck_assert(valid_rn("XX"));
+#test but_xxl_is_wrong
+	ck_assert(!valid_rn("XXL"));
