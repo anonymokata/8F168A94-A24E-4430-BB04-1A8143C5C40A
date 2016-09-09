@@ -46,3 +46,5 @@
 	ck_assert(!valid_rn("XXL"));
 #test xxx_is_ok
 	ck_assert(valid_rn("XXX"));
+#test quad_x_no_good
+	ck_assert(!valid_rn("XXXX"));
