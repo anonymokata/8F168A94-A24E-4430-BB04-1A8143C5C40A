@@ -54,3 +54,5 @@
 	ck_assert(!valid_rn("VX"));
 #test v_is_ok
 	ck_assert(valid_rn("V"));
+#test vv_is_no_ok
+	ck_assert(!valid_rn("VV"));
