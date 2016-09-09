@@ -38,3 +38,5 @@
 	ck_assert(valid_rn("L"));
 #test xl_is_good_too
 	ck_assert(valid_rn("XL"));
+#test just_x
+	ck_assert(valid_rn("X"));
