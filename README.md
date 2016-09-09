@@ -27,28 +27,18 @@ make; make cli
 You should see output similar to this;
 
 ```bash
-rm -f all_tests
-rm -f all_tests_gcov
-rm -f romani
-rm -f test/*_tests.c
-rm -f *.g???
-rm -f *.splint
-splint +unixlib -compdef -mayaliasunique -immediatetrans -I src src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn
-.c | tee all.splint
+splint +unixlib -compdef -mayaliasunique -immediatetrans -I src src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c | tee all.splint
 Splint 3.1.2 --- 03 May 2009
 
 Finished checking --- no warnings
 if [ -e /usr/local/lib/libcheck.a ]; then echo "libcheck.a ok!"; else echo "libcheck.a is not in /usr/local/lib as expected"; exit 1; fi;
 libcheck.a ok!
-checkmk test/./_all_tests.check test/./addition.check test/./convert_roman_char_to_dec.check test/./regex_roman_numerals.check test/./subtraction.check test/./v
-alidate.check > test/all_tests.c
-gcc -Wall `pkg-config --cflags check` -o all_tests src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c test/./all
-_tests.c -lcheck `pkg-config --libs --static check` -I src
+checkmk test/./_all_tests.check test/./addition.check test/./convert_roman_char_to_dec.check test/./regex_roman_numerals.check test/./subtraction.check test/./validate.check > test/all_tests.c
+gcc -Wall `pkg-config --cflags check` -o all_tests src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c test/./all_tests.c -lcheck `pkg-config --libs --static check` -I src
 LD_LIBRARY_PATH=/usr/local/lib ./all_tests
 Running suite(s): Core
 100%: Checks: 138, Failures: 0, Errors: 0
-gcc -Wall `pkg-config --cflags check` -fprofile-arcs -ftest-coverage -o all_tests_gcov src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./valid
-ate.c src/./validate_rn.c test/./all_tests.c -lcheck `pkg-config --libs --static check` -I src
+gcc -Wall `pkg-config --cflags check` -fprofile-arcs -ftest-coverage -o all_tests_gcov src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c test/./all_tests.c -lcheck `pkg-config --libs --static check` -I src
 LD_LIBRARY_PATH=/usr/local/lib ./all_tests_gcov
 Running suite(s): Core
 100%: Checks: 138, Failures: 0, Errors: 0
@@ -64,7 +54,7 @@ Creating 'convert_roman.c.gcov'
 
 gcov validate.c
 File 'src/validate.c'
-Lines executed:100.00% of 20
+Lines executed:100.00% of 12
 Creating 'validate.c.gcov'
 
 gcov adjust_roman.c
@@ -76,6 +66,24 @@ gcov validate_rn.c
 File 'src/validate_rn.c'
 Lines executed:100.00% of 7
 Creating 'validate_rn.c.gcov'
+
+gcc -Wall -g -o romani_valgrind src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c demo/main.c  -I src
+valgrind --suppressions=valgrind.supp --leak-check=yes  ./romani_valgrind + IV MMXCIV
+==28412== Memcheck, a memory error detector
+==28412== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==28412== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==28412== Command: ./romani_valgrind + IV MMXCIV
+==28412==
+MMXCVIII
+==28412==
+==28412== HEAP SUMMARY:
+==28412==     in use at exit: 0 bytes in 0 blocks
+==28412==   total heap usage: 1,462 allocs, 1,462 frees, 145,028 bytes allocated
+==28412==
+==28412== All heap blocks were freed -- no leaks are possible
+==28412==
+==28412== For counts of detected and suppressed errors, rerun with: -v
+==28412== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
 
 gcc -Wall -o romani src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c demo/main.c  -I src
 ```
@@ -98,6 +106,10 @@ As you can see from the output,
 
 	* note, main.c from the demo folder is not included as that code is not part of the exercise
 
+* valgrind is invoked. No Leaks Are Detected.
+
+	* note, I applied a supression to a warning about strcpy overwriting its target, this is intentional and mostly harmless
+
 * gcc is invoked a final time (if you ran make cli) to create the command line interface (romani)
 
 	* romani is for demo purposes only, the code is not test driven or checked by static analysis (thought it could have been)
@@ -110,6 +122,7 @@ As you can see from the output,
 		% ./romani + VI CCXI
 		CCXVII
 ```
+
 
 ## Other notes
 
@@ -214,4 +227,3 @@ As a Roman bookkeeper, I want to be able to subtract one number from another. So
 
 * I applied Valgrind at the last moment here. It complains about my use of strcpy to copy parts of a string over itself, but it detects no leaks.
 
-	* I was unable to supress the third complaint, its seems a phantom
