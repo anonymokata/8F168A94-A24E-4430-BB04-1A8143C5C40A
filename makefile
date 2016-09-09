@@ -42,6 +42,7 @@ coverage: checkmk
 	$(GCOV) convert_roman.c
 	$(GCOV) validate.c
 	$(GCOV) adjust_roman.c
+	$(GCOV) validate_rn.c  
 
 splint:
 	$(SPLINT) $(SPLINT_FLAGS) -I src $(SOURCES) | tee all.splint

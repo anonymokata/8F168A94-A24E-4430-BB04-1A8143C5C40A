@@ -27,24 +27,34 @@ make; make cli
 You should see output similar to this;
 
 ```bash
-splint +unixlib -compdef -mayaliasunique -I src src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c | tee all.splint
+rm -f all_tests
+rm -f all_tests_gcov
+rm -f romani
+rm -f test/*_tests.c
+rm -f *.g???
+rm -f *.splint
+splint +unixlib -compdef -mayaliasunique -immediatetrans -I src src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn
+.c | tee all.splint
 Splint 3.1.2 --- 03 May 2009
 
 Finished checking --- no warnings
 if [ -e /usr/local/lib/libcheck.a ]; then echo "libcheck.a ok!"; else echo "libcheck.a is not in /usr/local/lib as expected"; exit 1; fi;
 libcheck.a ok!
-checkmk test/./_all_tests.check test/./addition.check test/./convert_roman_char_to_dec.check test/./subtraction.check test/./validate.check > test/all_tests.c
-gcc -Wall `pkg-config --cflags check` -o all_tests src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c test/./all_tests.c -lcheck `pkg-config --libs --static check` -I src
+checkmk test/./_all_tests.check test/./addition.check test/./convert_roman_char_to_dec.check test/./regex_roman_numerals.check test/./subtraction.check test/./v
+alidate.check > test/all_tests.c
+gcc -Wall `pkg-config --cflags check` -o all_tests src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c test/./all
+_tests.c -lcheck `pkg-config --libs --static check` -I src
 LD_LIBRARY_PATH=/usr/local/lib ./all_tests
 Running suite(s): Core
-100%: Checks: 80, Failures: 0, Errors: 0
-gcc -Wall `pkg-config --cflags check` -fprofile-arcs -ftest-coverage -o all_tests_gcov src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c test/./all_tests.c -lcheck `pkg-config --libs --static check` -I src
+100%: Checks: 138, Failures: 0, Errors: 0
+gcc -Wall `pkg-config --cflags check` -fprofile-arcs -ftest-coverage -o all_tests_gcov src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./valid
+ate.c src/./validate_rn.c test/./all_tests.c -lcheck `pkg-config --libs --static check` -I src
 LD_LIBRARY_PATH=/usr/local/lib ./all_tests_gcov
 Running suite(s): Core
-100%: Checks: 80, Failures: 0, Errors: 0
+100%: Checks: 138, Failures: 0, Errors: 0
 gcov calculator.c
 File 'src/calculator.c'
-Lines executed:100.00% of 28
+Lines executed:100.00% of 26
 Creating 'calculator.c.gcov'
 
 gcov convert_roman.c
@@ -54,7 +64,7 @@ Creating 'convert_roman.c.gcov'
 
 gcov validate.c
 File 'src/validate.c'
-Lines executed:100.00% of 23
+Lines executed:100.00% of 20
 Creating 'validate.c.gcov'
 
 gcov adjust_roman.c
@@ -62,7 +72,12 @@ File 'src/adjust_roman.c'
 Lines executed:100.00% of 25
 Creating 'adjust_roman.c.gcov'
 
-gcc -Wall -o romani src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c demo/main.c  -I src
+gcov validate_rn.c
+File 'src/validate_rn.c'
+Lines executed:100.00% of 7
+Creating 'validate_rn.c.gcov'
+
+gcc -Wall -o romani src/./adjust_roman.c src/./calculator.c src/./convert_roman.c src/./validate.c src/./validate_rn.c demo/main.c  -I src
 ```
 
 As you can see from the output, 
@@ -194,4 +209,6 @@ As a Roman bookkeeper, I want to be able to subtract one number from another. So
 	* this is really just so we can run the test suite automatically
 
 	* makefile uses pkg-config for compilations
+
+* while testing I found some issues in my validation code and replaced it with a regex
 
