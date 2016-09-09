@@ -36,3 +36,5 @@
 	ck_assert(!valid_rn("LL"));
 #test l_alone_is_ok
 	ck_assert(valid_rn("L"));
+#test xl_is_good_too
+	ck_assert(valid_rn("XL"));
