@@ -21,25 +21,11 @@ static bool validate_value_in_range(const char *result)
 	return 0 < sum_of_digits && sum_of_digits <= MAX_ROMAN;
 }
 
-static bool validate_is_roman_number(const char *result)
-{
-	const char VALID_CHARS[] = ROMAN_CHARS;
-	bool all_roman_chars = true;
-	int idx;
-	for(idx = 0; idx < (int)strlen(result); idx++)
-	{
-		all_roman_chars &= (NULL != strchr(VALID_CHARS, result[idx]));
-	}
-	return all_roman_chars;
-}
-
-
 static bool is_roman_number(const char *str)
 {
 	if (NULL == str || 
             0u == strlen(str) || 
             !validate_value_in_range(str) || 
-            !validate_is_roman_number(str) ||
 	    !valid_rn(str))
 	{
 		return false;
