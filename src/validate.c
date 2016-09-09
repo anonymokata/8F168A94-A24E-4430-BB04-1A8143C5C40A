@@ -6,7 +6,6 @@
 #include <stdbool.h>
 
 #define MAX_ROMAN 3999
-#define ROMAN_CHARS "IVXLCDM"
 
 static bool validate_value_in_range(const char *result)
 {
