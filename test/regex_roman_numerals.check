@@ -30,3 +30,5 @@
 	ck_assert(valid_rn("CM"));
 #test follow_cm_with_l
 	ck_assert(valid_rn("CML"));
+#test the_m_doesnt_matter
+	ck_assert(valid_rn("ML"));
