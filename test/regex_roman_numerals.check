@@ -50,3 +50,5 @@
 	ck_assert(!valid_rn("XXXX"));
 #test xv_is_good
 	ck_assert(valid_rn("XV"));
+#test vx_is_no_good
+	ck_assert(!valid_rn("VX"));
