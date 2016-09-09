@@ -62,3 +62,5 @@
 	ck_assert(valid_rn("VI"));
 #test i_alone_is_ok
 	ck_assert(valid_rn("I"));
+#test ii_is_ok
+	ck_assert(valid_rn("II"));
