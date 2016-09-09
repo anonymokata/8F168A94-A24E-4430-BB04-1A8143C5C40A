@@ -24,3 +24,5 @@
 	ck_assert(valid_rn("CD"));
 #test m_before_cd
 	ck_assert(valid_rn("MCD"));
+#test mmm_before_cd
+	ck_assert(valid_rn("MMMCD"));
