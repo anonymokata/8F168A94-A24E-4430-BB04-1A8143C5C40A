@@ -21,7 +21,7 @@ GCOV_FLAGS=-fprofile-arcs -ftest-coverage
 GCOV_TEST_TARGET=all_tests_gcov
 
 SPLINT=splint
-SPLINT_FLAGS=+unixlib -compdef -mayaliasunique
+SPLINT_FLAGS=+unixlib -compdef -mayaliasunique -immediatetrans
 
 all: splint test coverage
 
