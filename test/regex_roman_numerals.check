@@ -58,3 +58,5 @@
 	ck_assert(!valid_rn("VV"));
 #test iv_is_ok
 	ck_assert(valid_rn("IV"));
+#test vi_is_ok
+	ck_assert(valid_rn("VI"));
