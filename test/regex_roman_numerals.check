@@ -68,3 +68,11 @@
 	ck_assert(valid_rn("III"));
 #test iiii_is_wrong
 	ck_assert(!valid_rn("IIII"));
+#test m
+	ck_assert(valid_rn("M"));
+#test m_c
+	ck_assert(valid_rn("MC"));
+#test m_c_x
+	ck_assert(valid_rn("MCX"));
+#test m_c_x_i
+	ck_assert(valid_rn("MCXI"));
