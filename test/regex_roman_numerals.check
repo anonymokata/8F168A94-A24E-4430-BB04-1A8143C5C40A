@@ -64,3 +64,5 @@
 	ck_assert(valid_rn("I"));
 #test ii_is_ok
 	ck_assert(valid_rn("II"));
+#test iii_is_ok
+	ck_assert(valid_rn("III"));
