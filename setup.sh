@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 echo 'installing development toolchains'
-apt-get install -y automake autoconf libtool pkg-config texinfo gcc make splint vim
+apt-get install -y automake autoconf libtool pkg-config texinfo gcc make splint valgrind vim 
 
 echo 'building check-0.10.0 from source'
 cd check-0.10.0

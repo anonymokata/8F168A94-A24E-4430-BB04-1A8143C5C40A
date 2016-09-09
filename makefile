@@ -12,7 +12,7 @@ CHECKMK=checkmk
 CHECKS=$(shell find test/. -maxdepth 1 -name "*.check" | sort)
 
 TEST_SOURCES=$(shell find test/. -maxdepth 1 ! -name main.c -name "*.c")
-TEST_CFLAGS=-Wall `pkg-config --cflags check`
+TEST_CFLAGS=$(CFLAGS) `pkg-config --cflags check`
 TEST_LIBS=`pkg-config --libs --static check`
 TEST_TARGET=all_tests
 
@@ -23,7 +23,12 @@ GCOV_TEST_TARGET=all_tests_gcov
 SPLINT=splint
 SPLINT_FLAGS=+unixlib -compdef -mayaliasunique -immediatetrans
 
-all: splint test coverage
+VALGRIND=valgrind
+VALGRIND_FLAGS=--suppressions=valgrind.supp --leak-check=yes 
+VALGRIND_CFLAGS=$(CFLAGS) -g
+VALGRIND_TARGET=$(CLI_TARGET)_valgrind
+
+all: splint test coverage valgrind
 
 have_check:
 	if [ -e $(LD_LIBRARY_PATH)/libcheck.a ]; then echo "libcheck.a ok!"; else echo "libcheck.a is not in $(LD_LIBRARY_PATH) as expected"; exit 1; fi;
@@ -47,6 +52,10 @@ coverage: checkmk
 splint:
 	$(SPLINT) $(SPLINT_FLAGS) -I src $(SOURCES) | tee all.splint
 
+valgrind:
+	$(CC) $(VALGRIND_CFLAGS) -o $(VALGRIND_TARGET) $(CLI_SOURCES) demo/main.c $(LIBS) -I src
+	$(VALGRIND) $(VALGRIND_FLAGS) ./$(VALGRIND_TARGET) + IV MMXCIV
+
 cli: 
 	$(CC) $(CFLAGS) -o $(CLI_TARGET) $(CLI_SOURCES) demo/main.c $(LIBS) -I src
 
@@ -55,6 +64,7 @@ clean:
 	rm -f $(TEST_TARGET)
 	rm -f $(GCOV_TEST_TARGET)
 	rm -f $(CLI_TARGET)
+	rm -f $(VALGRIND_TARGET)
 	rm -f test/*_tests.c
 	rm -f *.g???
 	rm -f *.splint

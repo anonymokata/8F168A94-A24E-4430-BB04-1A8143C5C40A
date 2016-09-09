@@ -212,3 +212,6 @@ As a Roman bookkeeper, I want to be able to subtract one number from another. So
 
 * while testing I found some issues in my validation code and replaced it with a regex
 
+* I applied Valgrind at the last moment here. It complains about my use of strcpy to copy parts of a string over itself, but it detects no leaks.
+
+	* I was unable to supress both complaints, but I did supress the first overwrite. I think this just learning on Valgrind suppressions.

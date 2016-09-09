@@ -1,0 +1,10 @@
+{
+   SourceDestOverlap
+   Memcheck:Overlap
+   fun:strcpy
+   fun:replace
+   fun:replace_all
+   fun:contract
+   fun:add
+   fun:main
+}
