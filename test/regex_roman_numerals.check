@@ -28,3 +28,5 @@
 	ck_assert(valid_rn("MMMCD"));
 #test and_then_cm
 	ck_assert(valid_rn("CM"));
+#test follow_cm_with_l
+	ck_assert(valid_rn("CML"));
