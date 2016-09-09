@@ -14,3 +14,5 @@
 	ck_assert(!valid_rn("MMMCCCC"));
 #test c_can_start_us_off
 	ck_assert(valid_rn("C"));
+#test cc_can_start_us_off
+	ck_assert(valid_rn("CC"));
