@@ -32,3 +32,5 @@
 	ck_assert(valid_rn("CML"));
 #test the_m_doesnt_matter
 	ck_assert(valid_rn("ML"));
+#test two_l_is_illegal_because_c
+	ck_assert(!valid_rn("LL"));
