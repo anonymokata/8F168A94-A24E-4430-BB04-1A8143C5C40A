@@ -8,12 +8,10 @@ bool valid_rn(const char *str)
 	bool valid = false;
 	const char *pattern = "^M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$";
 	regex_t regex;
-	if (0 == regcomp(&regex, pattern, REG_EXTENDED + REG_NOSUB))
+	regcomp(&regex, pattern, REG_EXTENDED + REG_NOSUB);
+	if (0 == regexec(&regex, str, 0, NULL, 0))
 	{
-		if (0 == regexec(&regex, str, 0, NULL, 0))
-		{
-			valid = true;
-		}
+		valid = true;
 	}
 	regfree(&regex);
 	return valid;
