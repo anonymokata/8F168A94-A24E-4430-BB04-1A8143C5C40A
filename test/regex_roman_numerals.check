@@ -76,3 +76,5 @@
 	ck_assert(valid_rn("MCX"));
 #test m_c_x_i
 	ck_assert(valid_rn("MCXI"));
+#test m_cc_xxx_vi
+	ck_assert(valid_rn("MCCXXXVI"));
