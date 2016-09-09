@@ -94,5 +94,7 @@
 	ck_assert(valid_rn("CLXXXIII"));
 #test dccclxxx_iii_is_ok
 	ck_assert(valid_rn("DCCCLXXXIII"));
-#test mmm_dccc_lxxx_iii
+#test mmm_dccc_lxxx_iii_is_ok
 	ck_assert(valid_rn("MMMDCCCLXXXIII"));
+#test m_cm_xc_ix_is_ok
+       ck_assert(valid_rn("MCMXCIX"));

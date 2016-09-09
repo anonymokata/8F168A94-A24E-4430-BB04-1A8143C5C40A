@@ -5,7 +5,8 @@
 
 bool valid_rn(const char *str)
 {
-	const char *pattern = "^M{0,3}(DC|CM|CD){0,1}C{0,3}(XL|L)?(X{0,3})I?V?I{0,2}$";
+	bool valid = true;
+	const char *pattern = "^M{0,3}(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$";
 	regex_t regex;
 	int regexec_ = 0;
 	if (0 == regcomp(&regex, pattern, REG_EXTENDED + REG_NOSUB)) //don't need to validate after we know it works
@@ -13,9 +14,9 @@ bool valid_rn(const char *str)
 		regexec_ = regexec(&regex, str, 0, NULL, 0);
 		if (REG_NOMATCH == regexec_ || REG_ESPACE == regexec_)
 		{
-			return false;
+			valid = false;
 		}
 	}
 	regfree(&regex);
-	return true;
+	return valid;
 }
