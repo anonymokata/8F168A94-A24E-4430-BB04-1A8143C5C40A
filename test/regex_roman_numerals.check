@@ -8,3 +8,5 @@
 	ck_assert(valid_rn("MMMC"));
 #test trip_m_can_also_be_followed_by_cc
 	ck_assert(valid_rn("MMMCC"));
+#test trip_m_can_also_be_followed_by_ccc
+	ck_assert(valid_rn("MMMCCC"));
