@@ -1,2 +1,4 @@
 #test quads_are_illegal
 	ck_assert(!valid_rn("MMMM"));
+#test trips_are_ok
+	ck_assert(valid_rn("MMM"));
