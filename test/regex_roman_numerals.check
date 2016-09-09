@@ -68,13 +68,31 @@
 	ck_assert(valid_rn("III"));
 #test iiii_is_wrong
 	ck_assert(!valid_rn("IIII"));
-#test m
+#test m_is_ok
 	ck_assert(valid_rn("M"));
-#test m_c
+#test m_c_is_ok
 	ck_assert(valid_rn("MC"));
-#test m_c_x
+#test m_c_x_is_ok
 	ck_assert(valid_rn("MCX"));
-#test m_c_x_i
+#test m_c_x_i_is_ok
 	ck_assert(valid_rn("MCXI"));
-#test m_cc_xxx_vi
+#test m_cc_xxx_vi_is_ok
 	ck_assert(valid_rn("MCCXXXVI"));
+#test m_dc_is_ok
+	ck_assert(valid_rn("MDC"));
+#test clx_is_ok
+	ck_assert(valid_rn("CLX"));
+#test lxxx_is_ok
+	ck_assert(valid_rn("LXXX"));
+#test clxxx_is_ok
+	ck_assert(valid_rn("CLXXX"));
+#test xxx_iii_is_ok
+	ck_assert(valid_rn("XXXIII"));
+#test lxxx_iii_is_ok
+	ck_assert(valid_rn("LXXXIII"));
+#test clxxx_iii_is_ok
+	ck_assert(valid_rn("CLXXXIII"));
+#test dccclxxx_iii_is_ok
+	ck_assert(valid_rn("DCCCLXXXIII"));
+#test mmm_dccc_lxxx_iii
+	ck_assert(valid_rn("MMMDCCCLXXXIII"));
