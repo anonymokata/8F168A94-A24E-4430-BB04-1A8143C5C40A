@@ -10,3 +10,5 @@
 	ck_assert(valid_rn("MMMCC"));
 #test trip_m_can_also_be_followed_by_ccc
 	ck_assert(valid_rn("MMMCCC"));
+#test trip_m_can_not_be_followed_by_quad_c
+	ck_assert(!valid_rn("MMMCCCC"));
